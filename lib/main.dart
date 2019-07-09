@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'pages/addBlog.dart';
+import 'assets/SMS.dart';
+
 //import 'package:intl/intl.dart';
 //import 'dart:convert';
 
@@ -52,17 +54,18 @@ class _MyHomePageState extends State<MyHomePage> {
        title: Text("Claude's Blog"),
        actions: <Widget>[
          IconButton(
-              icon: Icon(Icons.supervised_user_circle),
-              onPressed: _pushSaved,
+              icon: Icon(Icons.message),
+              onPressed: postRequest,
             ),
        ],
      ),
      body: _buildBody(context),
      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-    floatingActionButton: FloatingActionButton(
+     floatingActionButton: FloatingActionButton(
       child: const Icon(Icons.add),
       onPressed: _pushSaved,
     ),
+    
      bottomNavigationBar: BottomNavigationBar(
       
        items: const <BottomNavigationBarItem>[
@@ -73,6 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
         BottomNavigationBarItem(
           icon: Icon(Icons.business),
           title: Text('Business'),
+          
+          
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.school),
